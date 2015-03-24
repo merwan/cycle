@@ -2,9 +2,21 @@
 <%= form_for :cycle do |f| %>
   <p>
     <%= f.label :start_date, 'Beginning of cycle' %><br>
-    <%= f.date_field :start_date %>
+    <%= f.date_field :start_date, value: Date.today %>
   </p>
   <p>
-    <%= f.submit %>
+    <%= f.label :duration, 'Length of cycle' %><br>
+    <%= f.number_field 'duration', value: 28, min: 1 %>
+  </p>
+  <p>
+    <%= f.label :next_date, 'Estimated beginning of next cycle' %><br>
+    <%= f.date_field :next_date, disabled: true%>
+  </p>
+  <p>
+    <%= f.label :email, 'Please notify me 3 days before' %><br>
+    <%= f.email_field :email, placeholder: 'Enter your email address' %>
+  </p>
+  <p>
+    <%= f.submit 'Notify me' %>
   </p>
 <% end %>
